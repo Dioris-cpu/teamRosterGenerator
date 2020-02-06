@@ -1,0 +1,26 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "description": "Homework 10",
+  "main": "Employee.js",
+  "directories": {
+    "test": "test",
+    "src": "src"
+  },
+  "scripts": {
+    "start": "node Main.js",
+    "test": "jest --verbose test/*"
+  },
+  "keywords": [
+    "key"
+  ],
+  "author": "Dioris",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^7.0.4",
+    "jest": "^25.1.0",
+    "start": "^5.1.0",
+    "test": "^0.6.0",
+    "yarn": "^1.22.0"
+  }
+}
