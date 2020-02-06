@@ -14,7 +14,7 @@ const writeFileAsync = util.promisify(fs.writeFile);
 // newMain.js file. 
 class Main {
   constructor() {
-    this.teamArray = [];
+    this._teamArray = [];
   }
   async generateCards(){
     let htmlCards = "";
@@ -22,7 +22,7 @@ class Main {
       htmlCards += teamMember.generateCards();
     }
     const roster = Main._templateStart + htmlCards + Main._templateEnd;
-    await writeFileAsync(path.resolve(__dirname, "..", "teamRoster", "roster.html"),roster);
+    await writeFileAsync(path.resolve(__dirname, "teamRoster", "roster.html"),roster);
   }
   async run() {
     const { teamSize } = await inquirer.prompt([
@@ -34,12 +34,12 @@ class Main {
       }
     ]);
     for (let i = 0; i < teamSize; i++) {
-      const response = inquirer.prompt([
-        {
-          type: "input",
-          name: "teamSize",
-          message: "Please input your teams size"
-        },
+      const response = await inquirer.prompt([
+        // {
+        //   type: "input",
+        //   name: "teamSize",
+        //   message: "Please input your teams size"
+        // },
         {
           type: "input",
           name: "email",
@@ -55,19 +55,19 @@ class Main {
           type: "input",
           name: "github",
           message: "Please input your github",
-          when: ([role]) => role === Main._ENGINEER
+          when: (answers) => { return answers.role === Main._ENGINEER }
         },
         {
           type: "input",
           name: "school",
           message: "Please input your school",
-          when: ([role]) => role === Main._INTERN
+          when: (answers) => { return answers.role === Main._INTERN }
         },
         {
           type: "input",
           name: "office number",
           message: "Please input your office number",
-          when: ([role]) => role === Main._MANAGER 
+          when: (answers) => { return answers.role === Main._MANAGER }
         }
       ]);
       //deconstucted the reponse object.
