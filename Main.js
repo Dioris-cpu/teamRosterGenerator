@@ -35,11 +35,11 @@ class Main {
     ]);
     for (let i = 0; i < teamSize; i++) {
       const response = await inquirer.prompt([
-        // {
-        //   type: "input",
-        //   name: "teamSize",
-        //   message: "Please input your teams size"
-        // },
+        {
+          type: "input",
+          name: "name",
+          message: "Please input your name"
+        },
         {
           type: "input",
           name: "email",
