@@ -30,7 +30,7 @@ class Main {
         type: "input",
         name: "teamSize",
         message: "Please input your teams size",
-        default: 4
+        default: 3
       }
     ]);
     for (let i = 0; i < teamSize; i++) {
@@ -44,6 +44,11 @@ class Main {
           type: "input",
           name: "email",
           message: "Please input your email"
+        },
+        {
+          type: "input",
+          name: "id",
+          message: "Please input your id"
         },
         {
           type: "list",
@@ -68,7 +73,7 @@ class Main {
           name: "office number",
           message: "Please input your office number",
           when: (answers) => { return answers.role === Main._MANAGER }
-        }
+        },
       ]);
       //deconstucted the reponse object.
       const {
@@ -97,7 +102,6 @@ class Main {
     await this.generateCards();
   }
 };
-// Class arrival 
 Main._ENGINEER = "Engineer";
 Main._MANAGER = "Manager";
 Main._INTERN = "Intern";
